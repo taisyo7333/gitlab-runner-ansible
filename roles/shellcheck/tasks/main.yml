@@ -8,9 +8,13 @@
 
 - name: Install The Haskel Tool Stack
   command: "sh /tmp/install_stack.sh"
+  args:
+    creates: /usr/local/bin/stack
 
 - name: Stack Setup
   command: "/usr/local/bin/stack setup"
 
 - name: Install Shellcheck
   command: "/usr/local/bin/stack install ShellCheck"
+  args:
+    creates: /root/.local/bin/shellcheck
