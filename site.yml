@@ -17,6 +17,9 @@
   hosts: all
   become: true
   roles:
+    - name: docker
+      tags:
+        - docker
     - name: shellcheck
       tags:
         - shellcheck

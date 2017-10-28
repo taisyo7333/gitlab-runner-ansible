@@ -1,2 +1,5 @@
 ---
-# tasks file for docker
+- name: Install docker
+  yum:
+    name: docker
+    state: latest
