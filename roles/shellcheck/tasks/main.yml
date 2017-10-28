@@ -1,0 +1,16 @@
+---
+- name: Download The Haskel Tool Stack
+  uri:
+    url: https://get.haskellstack.org/
+    method: GET
+    dest: /tmp/install_stack.sh
+    creates: /tmp/install_stack.sh
+
+- name: Install The Haskel Tool Stack
+  command: "sh /tmp/install_stack.sh"
+
+- name: Stack Setup
+  command: "/usr/local/bin/stack setup"
+
+- name: Install Shellcheck
+  command: "/usr/local/bin/stack install ShellCheck"
