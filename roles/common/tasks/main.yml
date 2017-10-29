@@ -5,7 +5,10 @@
   with_items:
     - epel-release
     - git
-    - python-pip
+
+- name: Install python pakages
+  yum:
+    name: python-pip
 
 - name: Upgrade pip to latest
   pip:
