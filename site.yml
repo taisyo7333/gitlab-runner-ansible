@@ -20,9 +20,15 @@
     - name: common
       tags:
         - common
+
+    - name: gitlab-runner
+      tags:
+        - gitlab-runner
+
     - name: docker
       tags:
         - docker
+
     - name: shellcheck
       tags:
         - shellcheck
