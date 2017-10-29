@@ -35,10 +35,16 @@
     state: started
     enabled: true
 
+- name: debug list all options with gitlab-runner regisgter
+  command: "{{ gitlab_runner_path }} register --help"
+  when: "gitlab_runner_debug == true"
+
 - name: register gitlab-runner with gitlab
   command: "{{ gitlab_runner_path }} register"
   environment:
     CI_SERVER_URL: "{{ gitlab_runner_ci_server_url }}"
+    CI_SERVER_TOKEN: "{{ gitlab_runner_token }}"
     RUNNER_NAME: "{{ gitlab_runner_name }}"
-    REGISTRATION_TOKEN: "{{ gitlab_runner_token }}"
     REGISTER_NON_INTERACTIVE: true
+    RUNNER_EXECUTOR: "{{ gitlab_runner_executor }}"
+

@@ -3,6 +3,9 @@ gitlab_runner_user: gitlab-runner
 gitlab_runner_path: /usr/local/bin/gitlab-runner
 gitlab_runner_home: /home/gitlab-runner
 gitlab_runner_shell: /bin/bash
+gitlab_runner_executor: shell
+gitlab_runner_debug: false
+
 gitlab_runner_ci_server_url: "https://gitlab.example.com"
 gitlab_runner_name: "ansibler_managed_runner"
 gitlab_runner_token: "token_sample"
