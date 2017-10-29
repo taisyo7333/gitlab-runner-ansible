@@ -1,2 +1,4 @@
 ---
-# defaults file for shellcheck
+shellcheck_stack_path: /usr/local/bin/stack
+shellcheck_stack_dl_path: /tmp/install_stack.sh
+shellcheck_stack_build_path: /root/.local/bin/shellcheck

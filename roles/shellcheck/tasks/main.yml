@@ -1,21 +1,21 @@
 ---
 - block:
-    - name: Download The Haskel Tool Stack
+    - name: Download The Haskell Tool Stack
       uri:
         url: https://get.haskellstack.org/
         method: GET
-        dest: /tmp/install_stack.sh
-        creates: /tmp/install_stack.sh
+        dest: "{{ shellcheck_stack_dl_path }}"
+        creates: "{{ shellcheck_stack_dl_path }}"
 
-    - name: Install The Haskel Tool Stack
-      command: "sh /tmp/install_stack.sh"
+    - name: Install The Haskell Tool Stack
+      command: "sh {{ shellcheck_stack_dl_path }}"
       args:
-        creates: /usr/local/bin/stack
+        creates: "{{ shellcheck_stack_path }}"
 
     - name: Stack Setup
-      command: "/usr/local/bin/stack setup"
+      command: "{{ shellcheck_stack_path }} setup"
 
-- name: Install Shellcheck
-  command: "/usr/local/bin/stack install ShellCheck"
+- name: Install ShellCheck
+  command: "{{ shellcheck_stack_path }} install ShellCheck"
   args:
-    creates: /root/.local/bin/shellcheck
+    creates: "{{ shellcheck_stack_build_path }}"

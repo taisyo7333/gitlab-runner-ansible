@@ -47,4 +47,3 @@
     RUNNER_NAME: "{{ gitlab_runner_name }}"
     REGISTER_NON_INTERACTIVE: true
     RUNNER_EXECUTOR: "{{ gitlab_runner_executor }}"
-
