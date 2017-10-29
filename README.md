@@ -2,26 +2,27 @@
 
 ## Preparation
 1. copy file
-  ```sh
-  cp extra-vars.yml.sample extra-vars.yml
-  ```
-1. Edit extra-vars.yml
-1. Install vagrant
-  ```
-  brew tap caskroom/cask
-  brew cask install virtualbox vagrant
-  ```
+```sh
+cp extra-vars.yml.sample extra-vars.yml
+```
+
+2. Edit extra-vars.yml
+3. Install vagrant
+```
+brew tap caskroom/cask
+brew cask install virtualbox vagrant
+```
 
 ## How to use with vagrant
 1. start vagrant
-  ```
-  vagrant up
-  ```
+```
+vagrant up
+```
 
-1. run ansible-playbook
-  ```
-  ansible-playbook -i vagrant.py site.yml -e '@extra-vars.yml'
-  ```
+2. run ansible-playbook
+```
+ansible-playbook -i vagrant.py site.yml -e '@extra-vars.yml'
+```
 
 
 
