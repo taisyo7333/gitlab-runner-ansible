@@ -1,2 +1,5 @@
 ---
-# defaults file for gitlab-runner
+gitlab_runner_user: gitlab-runner
+gitlab_runner_path: /usr/local/bin/gitlab-runner
+gitlab_runner_home: /home/gitlab-runner
+gitlab_runner_shell: /bin/bash

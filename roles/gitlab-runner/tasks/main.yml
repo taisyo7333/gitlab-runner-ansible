@@ -1,2 +1,36 @@
 ---
-# tasks file for gitlab-runner
+- name: Download one of the binaries for your system
+  uri:
+    url: https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+    method: GET
+    dest: "{{ gitlab_runner_path }}"
+    creates: "{{ gitlab_runner_path }}"
+
+- name: Give gitlab-runner permissions to execute
+  file:
+    path: "{{ gitlab_runner_path }}"
+    mode: "u+x,g+x,o+x"
+
+- name: GitLab CI user
+  user:
+    name: "{{ gitlab_runner_user }}"
+    comment: "GitLab Runner"
+    createhome: yes
+    home: "{{ gitlab_runner_home }}"
+    shell: "{{ gitlab_runner_shell }}"
+
+- name: find gitlab-runner on services
+  find:
+    path: /etc/systemd/system/
+    patterns: "gitlab-runner.service"
+  register: gitlab_runner_existed
+
+- name: Install gitlab-runner
+  command: "{{ gitlab_runner_path }} install --user={{ gitlab_runner_user }} --working-directory={{ gitlab_runner_home }}"
+  when: "gitlab_runner_existed.matched != 1"
+
+- name: Start gitlab-runner
+  service:
+    name: gitlab-runner
+    state: started
+    enabled: true
