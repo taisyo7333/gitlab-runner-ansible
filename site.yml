@@ -17,6 +17,9 @@
   hosts: all
   become: true
   roles:
+    - name: common
+      tags:
+        - common
     - name: docker
       tags:
         - docker
