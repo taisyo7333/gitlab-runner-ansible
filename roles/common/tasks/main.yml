@@ -5,3 +5,9 @@
   with_items:
     - epel-release
     - git
+    - python-pip
+
+- name: Upgrade pip to latest
+  pip:
+    name: pip
+    state: latest

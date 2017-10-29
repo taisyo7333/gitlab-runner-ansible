@@ -1,11 +1,11 @@
 ---
-- name: pipelining対応用play
+- name: Prepare pipelining
   hosts: all
   become: yes
   vars:
     ansible_ssh_pipelining: no
   tasks:
-    - name: ansible_userに対するrequiretty設置を無効化
+    - name: Disable requiretty for ansible_user
       lineinfile:
         dest: /etc/sudoers
         regexp: '^Defaults:{{ ansible_user }}\srequiretty'
@@ -13,7 +13,7 @@
         validate: 'visudo -cf %s'
         backup: yes
 
-- name: gitlab-runnerをCentOS上に構築する
+- name: Build gitlab-runner on CentOS
   hosts: all
   become: true
   roles:

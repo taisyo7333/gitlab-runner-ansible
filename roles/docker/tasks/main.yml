@@ -4,17 +4,6 @@
     name: docker
     state: latest
 
-- block:
-    - name: Downlod get-pip
-      uri:
-        url: https://bootstrap.pypa.io/get-pip.py
-        method: GET
-        dest: /tmp/
-        create: /tmp/get-pip.py
-
-    - name: Install pip
-      command: "python /tmp/get-pip.py"
-
 - name: Install docker-compose
   pip:
     name: docker-compose
