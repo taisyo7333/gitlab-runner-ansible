@@ -19,15 +19,10 @@
     home: "{{ gitlab_runner_home }}"
     shell: "{{ gitlab_runner_shell }}"
 
-- name: find gitlab-runner on services
-  find:
-    path: /etc/systemd/system/
-    patterns: "gitlab-runner.service"
-  register: gitlab_runner_existed
-
 - name: Install gitlab-runner
   command: "{{ gitlab_runner_path }} install --user={{ gitlab_runner_user }} --working-directory={{ gitlab_runner_home }}"
-  when: "gitlab_runner_existed.matched != 1"
+  args:
+    creates: /etc/systemd/system/gitlab-runner.service
 
 - name: Start gitlab-runner
   service:
