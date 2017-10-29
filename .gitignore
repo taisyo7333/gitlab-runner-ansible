@@ -3,3 +3,5 @@
 
 # ansible
 *.retry
+
+extra-vars.yml
