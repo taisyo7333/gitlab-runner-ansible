@@ -1,4 +1,12 @@
 ---
+- name: Appends domain definition to hosts file
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "{{ gitlab_runner_ci_server_domain }}"
+    line: "{{ gitlab_runner_ci_server_ip }}	{{ gitlab_runner_ci_server_domain }}"
+    backup: yes
+  when: "gitlab_runner_no_dns == true"
+
 - name: Download one of the binaries for your system
   uri:
     url: https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
@@ -18,6 +26,8 @@
     createhome: yes
     home: "{{ gitlab_runner_home }}"
     shell: "{{ gitlab_runner_shell }}"
+    append: yes
+    groups: dockerroot
 
 - name: Install gitlab-runner
   command: "{{ gitlab_runner_path }} install --user={{ gitlab_runner_user }} --working-directory={{ gitlab_runner_home }}"
