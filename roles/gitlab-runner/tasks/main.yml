@@ -27,12 +27,12 @@
     home: "{{ gitlab_runner_home }}"
     shell: "{{ gitlab_runner_shell }}"
     append: yes
-    groups: dockerroot
+    groups: docker
 
 - name: Install gitlab-runner
   command: "{{ gitlab_runner_path }} install --user={{ gitlab_runner_user }} --working-directory={{ gitlab_runner_home }}"
   args:
-    creates: /etc/systemd/system/gitlab-runner.service
+    creates: /etc/init.d/gitlab-runner
 
 - name: Start gitlab-runner
   service:
