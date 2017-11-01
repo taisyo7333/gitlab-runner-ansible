@@ -48,7 +48,7 @@
   command: "{{ gitlab_runner_path }} register"
   environment:
     CI_SERVER_URL: "{{ gitlab_runner_ci_server_url }}"
-    CI_SERVER_TOKEN: "{{ gitlab_runner_token }}"
+    REGISTRATION_TOKEN: "{{ gitlab_runner_token }}"
     RUNNER_NAME: "{{ gitlab_runner_name }}"
     REGISTER_NON_INTERACTIVE: true
     RUNNER_EXECUTOR: "{{ gitlab_runner_executor }}"
